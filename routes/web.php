@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//追加
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// 部署関係のページ 従業員関係のページなど、ログインしていないと、いけない
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::resource('/users', UsersController::class, ['only' => ['index']]);
+
+
+});
