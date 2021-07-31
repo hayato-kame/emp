@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // 部署関係のページ 従業員関係のページなど、ログインしていないと、いけない
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::resource('/users', UsersController::class, ['only' => ['index']]);
+    Route::resource('/users', UsersController::class, ['only' => ['index', 'show']]);
 
 
 });

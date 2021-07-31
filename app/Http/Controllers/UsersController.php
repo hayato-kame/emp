@@ -20,4 +20,11 @@ class UsersController extends Controller
         return view('users.index', ['users' => $users]);
     }
 
+    public function show($id)
+    {
+        $user = Auth::user();
+        // $user = User::find($id); // これもいい
+        return view('users.show', ['user' => $user]);
+    }
+
 }

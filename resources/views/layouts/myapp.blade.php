@@ -14,17 +14,17 @@
         .content {margin:10px; }
         .footer { text-align:right; font-size:10pt; margin:10px;
             border-bottom:solid 1px #ccc; color:#ccc; }
-         table {
+         /* table {
              border-collapse: collapse; border: solid 2px #999; margin: 15px 0px;
-             border-width: 2px 0px;  /*  これにより、外枠は、上だけつきます！！  */
-         }
+             border-width: 2px 0px;
+         } */
          th {background-color: #0099ff; color:fff; padding:5px 10px; }
          td {border: solid 1px #aaa; color:#999; padding:5px 10px; }
          a { text-decoration: none; }
          /* 特定のセルだけボーダーなし */
-         .noborder {
+         /* .noborder {
          border: 0px none;
-         }
+         } */
 
          ul.toolbar , div.toolbar{
          margin: 20px;

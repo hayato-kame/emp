@@ -16,8 +16,11 @@
                     <td>{{$user->id}}</td>
                     <td>
                         {{$user->name}}
+                    @if($user == Auth::user())
 
+                        <button type="button" class="btn btn-light" display="inline-block">{!! link_to_route('users.show', '詳細ページ', ['user' => Auth::id()]) !!}</button>
 
+                    @endif
                     </td>
                 </tr>
             @endforeach
