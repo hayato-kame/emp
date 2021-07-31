@@ -26,7 +26,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // 部署関係のページ 従業員関係のページなど、ログインしていないと、いけない
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::resource('/users', UsersController::class, ['only' => ['index', 'show']]);
+    // resource 使うと、名前をつけたように使える 'users.index' とか 'users.show'とか　link_to_route　で使えるらしい
+    Route::resource('/users', UsersController::class, ['only' => ['index', 'show', 'edit', 'update']]);
 
 
 });

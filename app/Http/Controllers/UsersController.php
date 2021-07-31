@@ -27,4 +27,23 @@ class UsersController extends Controller
         return view('users.show', ['user' => $user]);
     }
 
+    public function edit($id)
+    {
+        $user = Auth::user();
+        // $user = User::find($id); // これもいい
+        return view('users.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $param = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+        $user = User::find($id);
+        // Userクラスに　protected $fillable　で設定してあるので、fillメソッドで一気にセットして更新できる
+        $user->fill($param)->save();
+        return redirect('/users');
+    }
+
 }

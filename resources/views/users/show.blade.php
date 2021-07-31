@@ -30,7 +30,7 @@
                     @if($user == Auth::user())
                         <td>
                             <button type="button" class="btn btn-light" display="inline-block">
-
+                                {!! link_to_route('users.edit', 'ユーザー情報編集', ['user' => Auth::user()->id] ) !!}
                             </button>
                         </td>
                         <td>
