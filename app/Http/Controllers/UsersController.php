@@ -47,6 +47,19 @@ class UsersController extends Controller
     }
 
     // パスワードのことは、このコントローラではなく、PasswordControllerを作成しました。
-    // 内容は、PasswordControllerを作成してから、jetstreamで自動生成された UpdateUserPassword.phpから 内容をコピペして編集した。
+    // 内容は、PasswordControllerを作成してから、jetstreamで自動生成された UpdateUserPassword.phpから 内容を参考にして編集した。
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/users');
+    }
 
 }

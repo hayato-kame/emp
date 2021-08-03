@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function() {
 
     // resource 使うと、名前をつけたように使える 'users.index' とか 'users.show'とか　link_to_route　で使えるらしい
-    Route::resource('/users', UsersController::class, ['only' => ['index', 'show', 'edit', 'update']]);
+    Route::resource('/users', UsersController::class, ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
 
     Route::resource('/password', PasswordController::class, ['only' => ['show', 'edit', 'update']]);
 

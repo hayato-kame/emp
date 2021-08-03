@@ -40,6 +40,11 @@
                             {{-- password/{password}/edit の {}の中に入るものを第三引数で指定します。 http://localhost:8000/password/1/edit　というURLにするために このルートはresourcesメソッドで作ってるので、--}}
                         </td>
                         <td>
+                            {!! Form::open(['route' => ['users.destroy', Auth::user()->id], 'method' => 'delete']) !!}
+                                {{-- {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm', 'onclick' => 'confirm("本当に削除してよろしいですか")']) !!} --}}
+                                {{-- ユーザーについては、確認してキャンセルしても、削除されてしまうので、'onclick' => 'confirm("本当に削除してよろしいですか")' はつけないこと --}}
+                                {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::close() !!}
                         </td>
                     @endif
                 </tr>

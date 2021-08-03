@@ -80,6 +80,4 @@ class PasswordController extends Controller
         return redirect('users/:id');
     }
 
-
-
 }
