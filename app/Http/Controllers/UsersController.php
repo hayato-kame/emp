@@ -46,4 +46,7 @@ class UsersController extends Controller
         return redirect('/users');
     }
 
+    // パスワードのことは、このコントローラではなく、PasswordControllerを作成しました。
+    // 内容は、PasswordControllerを作成してから、jetstreamで自動生成された UpdateUserPassword.phpから 内容をコピペして編集した。
+
 }

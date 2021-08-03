@@ -34,6 +34,10 @@
                             </button>
                         </td>
                         <td>
+                            <button type="button" class="btn btn-light" display="inline-block">
+                                {!! link_to_route('password.edit', 'ユーザパスワード変更', ['password' => Auth::user()->id]) !!}
+                            </button>
+                            {{-- password/{password}/edit の {}の中に入るものを第三引数で指定します。 http://localhost:8000/password/1/edit　というURLにするために このルートはresourcesメソッドで作ってるので、--}}
                         </td>
                         <td>
                         </td>
