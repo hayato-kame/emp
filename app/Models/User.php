@@ -18,7 +18,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    // パスワードだけを変更しても、他は、なくてもsave()できるように 必要？？？
+    // ここを自分で追加した。
+    // パスワードだけを変更しても、他は、なくてもfill()できるように 必要かな？？？
     protected $guarded = ['id', 'name' ,'email', 'email_verified_at','current_team_id','profile_photo_path'];
 
     /**

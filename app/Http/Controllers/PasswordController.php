@@ -46,7 +46,7 @@ class PasswordController extends Controller
      * Update the users password.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Auth::user()->id をフォームから送ってる   $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -67,20 +67,17 @@ class PasswordController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-         //パスワードを変更
-        // $user = Auth::user();
-        // $user->password = bcrypt($request->get('password'));
-        // dd($user);
-        // $user->save();
+        //パスワードを変更
         $param = [
             'password' => bcrypt($request->get('password')),
         ];
         $user = User::find($id);
         $user->fill($param)->save();
 
-
-        return redirect('users/:id')->with('flash_message', 'パスワードを変更しました。');
-
+        // ルーティングは resoucesメソッドを使ってるので redirect('users/:id') です。詳細ページにリダイレクトしますが。その前に、ログインし直しになり、その後で詳細ページに行きます。
+        // また、新しいパスワードでログインし直しになりますので、ログインページに行きます。ので、フラッシュメーっセージは表示できなくなるので  セッションに保存しても ->with('flash_message', 'パスワードを変更しました。');なくなる
+        // return redirect('users/:id')->with('flash_message', 'パスワードを変更しました。');
+        return redirect('users/:id');
     }
 
 
