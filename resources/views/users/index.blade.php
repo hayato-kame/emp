@@ -8,7 +8,9 @@
 @endsection
 
 @section('content')
-
+    <div class="toolbar">
+        {!! link_to_route('dashboard', 'Dashboardへ戻る') !!}
+    </div>
     {{-- ユーザー一覧 --}}
     @include('users.users')
 @endsection

@@ -8,6 +8,9 @@
 @endsection
 
 @section('content')
+    <div class="toolbar">
+        {!! link_to_route('users.index', 'ユーザー一覧へ戻る') !!}
+    </div>
    {{-- @if (Auth::check()) @else  @endif  と同じ意味の  @auth  @else  @endauth  --}}
        {{--  @auth @else @endauthは、ミドルウェアで'middleware' => 'auth'　をつけてるから本当はいらないかも --}}
     @auth

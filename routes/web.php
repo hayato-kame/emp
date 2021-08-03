@@ -4,6 +4,7 @@ use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 //追加
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DepartmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/users', UsersController::class, ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
 
     Route::resource('/password', PasswordController::class, ['only' => ['show', 'edit', 'update']]);
+
+    Route::get('/departments', [ DepartmentsController::class, 'index' ])->name('departments.index');
+    //部署新規作成フォームと、編集フォームの表示をする http://localhost:8000/department/new_edit?action=add  新規作成ページへのリンクボタンからは、クエリー文字列がついてくる
+    Route::get('/department/new_edit', [ DepartmentsController::class, 'new_edit' ])->name('departments.new_edit');
 
 });
