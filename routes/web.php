@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //追加
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DepartmentsController;
+use App\Models\Department;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/departments', [ DepartmentsController::class, 'index' ])->name('departments.index');
     //部署新規作成フォームと、編集フォームの表示をする http://localhost:8000/department/new_edit?action=add  新規作成ページへのリンクボタンからは、クエリー文字列がついてくる
-    Route::get('/department/new_edit', [ DepartmentsController::class, 'new_edit' ])->name('departments.new_edit');
-
+    Route::get('/departments/new_edit', [ DepartmentsController::class, 'new_edit' ])->name('departments.new_edit');
+    // 部署名の編集や、部署の削除などをするアクションへのルート
+    Route::post('/departments/dep_control', [ DepartmentsController::class, 'dep_control' ])->name('departments.dep_control');
 });

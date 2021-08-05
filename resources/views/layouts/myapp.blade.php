@@ -27,6 +27,7 @@
          } */
 
          ul.toolbar , div.toolbar{
+         font-size: 20px;
          margin: 20px;
          text-align: right;
          }

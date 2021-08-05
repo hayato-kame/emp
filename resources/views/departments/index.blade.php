@@ -34,10 +34,18 @@
                                 <td>{{$department->department_id}}</td>
                                 <td>{{$department->department_name}}</td>
                                 <td>
-
+                                    {!! Form::model($department, ['route' => ['departments.new_edit', $department->department_id], 'method' => 'get']) !!}
+                                        {!! Form::hidden('action', 'edit') !!}
+                                        {!! Form::hidden('department_id', $department->department_id) !!}
+                                        {!! Form::submit('編集', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
                                 </td>
                                 <td>
-
+                                    {!! Form::model($department, ['route' => ['departments.dep_control', $department->department_id], 'method' => 'post']) !!}
+                                        {!! Form::hidden('action', 'delete') !!}
+                                        {!! Form::hidden('department_id', $department->department_id) !!}
+                                        {!! Form::submit('削除', ['class' => 'btn btn-danger', 'onclick' => 'conform("本当に削除してよろしいですか")']) !!}
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endforeach
