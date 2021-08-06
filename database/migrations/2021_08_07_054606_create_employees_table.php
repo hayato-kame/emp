@@ -43,7 +43,7 @@ class CreateEmployeesTable extends Migration
             // これは、departmentsテーブルに対しての、外部キーのカラム
             // 主テーブルがdepartmentsテーブルです 型を合わせる必要がある 文字列型になる
             $table->string('department_id');
-
+            // Employeeモデルに、$datesプロパティをオーバーライドすること　日付の成形についての
             $table->datetime('hire_date');  // 入社日
             $table->datetime('retire_date'); // 退社日
             $table->timestamps();
