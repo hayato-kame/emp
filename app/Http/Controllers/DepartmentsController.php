@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 //追加
 use App\Models\Department;
 // 例外クラスは、App\Http\Controllers\QueryException　では無いので注意する  Illuminate\Database\QueryExceprion  の方を使う
-use Illuminate\Database\QueryExceprion;
+use Illuminate\Database\QueryException;
 
 class DepartmentsController extends Controller
 {
@@ -27,6 +27,7 @@ class DepartmentsController extends Controller
                 break;
             case 'edit':
                 $department = Department::find($request->department_id);
+                // dd($department->department_id);
                 break;
         }
         return view('departments.new_edit', ['department' => $department, 'action' => $action]);
@@ -35,7 +36,7 @@ class DepartmentsController extends Controller
     public function dep_control(Request $request)
     {
         $action = $request->action;
-        $f_mesage = "";
+        $f_message = "";
          // dd($request->department_name); // フォームに入力された値を取得
         // dd($request->department_id); // hiddenフィールドから送られてくる値 新規作成では、 null
         switch($action)
@@ -62,8 +63,24 @@ class DepartmentsController extends Controller
                 $f_message = '部署データを新規作成しました。';
                 break;
             case 'edit':
+                $department = Department::find($request->department_id);
+                // findメソッドはプライマリーキーを引数にとる
+                $department->department_name = $request->department_name; // フォームからの送信の値で上書きする
+                $department->save();
+                $f_message = '部署名を更新しました。';
                 break;
             case 'delete':
+                $department = Department::find($request->department_id);
+                // delete()が例外を投げる可能性あるので try catch で囲う
+                // 子テーブルemployeesの外部キー制約で、->onDelete('restrict')  だと、親を消そうとして、紐づく子テーブルのデータがあったら、エラー発生する
+                try {
+                    $department->delete();
+                } catch (QueryException $e) {
+                    $f_message = 'この部署は、所属する社員がいるので、削除できませんでした。';
+                    return redirect('/departments')->with( ['f_message' => $f_message] );
+                    // return　で即終了してリダイレクト
+                }
+                $f_message = '部署データを削除しました。';
                 break;
         }
         return redirect('/departments')->with(['f_message' => $f_message]);

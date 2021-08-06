@@ -18,7 +18,7 @@
              border-collapse: collapse; border: solid 2px #999; margin: 15px 0px;
              border-width: 2px 0px;
          } */
-         th {background-color: #0099ff; color:fff; padding:5px 10px; }
+         th {background-color: #0099ff; color:#fff; padding:5px 10px; }
          td {border: solid 1px #aaa; color:#999; padding:5px 10px; }
          a { text-decoration: none; }
          /* 特定のセルだけボーダーなし */
@@ -34,8 +34,9 @@
 
          /* フラッシュ */
          p.notice {
+         font-size: 18px;
          border: 1px solid blue;
-         padding: 3px;
+         padding: 6px;
          background-color: #ccf;
          border-radius: 5px;
          }

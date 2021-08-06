@@ -25,7 +25,7 @@
         {{-- フラッシュメッセージ --}}
 　　　　　@if(session('flash_message'))
             <p class="notice">
-                メッセージ:{{session('flash_message')}}
+                メッセージ: {{session('flash_message')}}
             </p>
         @endif
         <div class="toolbar">
@@ -39,7 +39,8 @@
             @enderror
             <div class="form-group form-inline row">
                 {!! Form::label('department_name', '部署名:', ['class' => 'col-sm-3 col-form-label']) !!}
-                {!! Form::text('department_name', null, ['class' => 'form-control col-sm-8']) !!}
+                {{-- {!! Form::text('department_name', null, ['class' => 'form-control col-sm-8']) !!} --}}
+                {!! Form::text('department_name', $department->department_name, ['class' => 'form-control col-sm-8']) !!}
             </div>
             {!! Form::hidden('action', $action) !!}
             {!! Form::hidden('department_id', $department->department_id) !!}
