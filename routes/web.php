@@ -39,4 +39,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/departments/new_edit', [ DepartmentsController::class, 'new_edit' ])->name('departments.new_edit');
     // 部署名の編集や、部署の削除などをするアクションへのルート
     Route::post('/departments/dep_control', [ DepartmentsController::class, 'dep_control' ])->name('departments.dep_control');
+
+
 });
