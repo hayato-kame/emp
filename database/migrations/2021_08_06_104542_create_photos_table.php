@@ -20,8 +20,8 @@ class CreatePhotosTable extends Migration
             // $table->id();
             $table->bigIncrements('photo_id');
             // このbigIncrementsメソッドは主キーに相当するカラムを作成しますので、これだけで、主キーとなってます。
-            // 自動インクリメントUNSIGNED BIGINT（主キー）に相当するので、自動採番します。
-            // 従テーブルのemployeesテーブルでは、データ型を合わせるために、unsignedBigIntegerメソッドを使ってください
+            // 自動インクリメントUNSIGNED BIGINT（主キー）に相当するので、自動採番します。この'photo_id'　カラムは、従テーブルから参照されるカラムになります。
+            // 従テーブルのemployeesテーブルでは、データ型を合わせるために、unsignedBigIntegerメソッドを使ってください(外部キーのカラム'photo_id'に)
 
             // ここで、Blob型を書かないでください。binaryメソッドでは、バイナリーデータが大きくて、間に合わないので。
             // $table->binary('photo_data')->nullable();  // コメントアウトする

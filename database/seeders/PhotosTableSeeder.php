@@ -27,9 +27,9 @@ class PhotosTableSeeder extends Seeder
                 'photo_data' => null,
                 'mime_type' => null,
             ];
-            $photo = new Photo();
-            $photo->fill($param)->save();
-            // もしくはこのやり方でもOK
+            $photo = new Photo();  // このやり方の場合、モデル作成が先です。
+            $photo->fill($param)->save(); // モデルでfillメソッドのための、処理を書いておいてください。save()メソッドのための処理も書く
+            // もしくはこのやり方でもOK これだと、モデルがまだ作ってなくても、データベースへデータを入れられる。
             // DB::table('photos')->insert($param);
         }
     }

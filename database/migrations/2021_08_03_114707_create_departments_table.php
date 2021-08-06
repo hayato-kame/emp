@@ -19,6 +19,7 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             // $table->id();
             // 主キーが 文字列になります。モデルにも、設定が必要です
+            // 'department_id' カラムは、従テーブルのemployeesから、参照されるカラムです。employeesの'department_id'カラムと データ型を合わせる必要がある
             $table->string('department_id', 20)->primary(); // 第二引数の数字は、stringメソッドにだけつけてください。ingeterメソッドにつけると、プライマリーキーがtrueとして認識されてしまう、
             $table->string('department_name', 20);
             // $table->timestamps();  // タイムスタンプを使用しません、モデルにも設定が必要です。
