@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([ UsersTableSeeder::class ]);
-        //親テーブルから上に順に書くので、employeesテーブルのシーダーよりも上に書く
+        //departmentsテーブルが親テーブルです。親から上に順に書くので、employeesテーブルのシーダーよりも上に書く
         $this->call([ DepartmentsTableSeeder::class ]);
-
+        // photos は親テーブルです 子テーブルはemployeesテーブルです
+        $this->call( [PhotosTableSeeder::class] );
     }
 }

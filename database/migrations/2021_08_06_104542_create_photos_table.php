@@ -26,7 +26,7 @@ class CreatePhotosTable extends Migration
             // ここで、Blob型を書かないでください。binaryメソッドでは、バイナリーデータが大きくて、間に合わないので。
             // $table->binary('photo_data')->nullable();  // コメントアウトする
 
-            $table->string('mime_type')->nullable;
+            $table->string('mime_type')->nullable();
 
             $table->timestamps();
         });
