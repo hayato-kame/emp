@@ -27,7 +27,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name', 50);
             // integerメソッドの引数注意。第二引数には、指定入れないでください。プライマリーキー指定です。
             $table->integer('age');
-            // 性別は、整数で管理する
+            // 性別は、整数で管理する 1:男  2:女
             $table->integer('gender');
             // 外部キーのカラムです。カラムは、そのまま、モデルのフィールドになる。
             // 外部キーでは、主テーブルphotos側の 'photo_id'カラムと、データ型を合わせる必要がある、
