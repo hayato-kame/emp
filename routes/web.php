@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DepartmentsController;
 use App\Models\Department;
+use App\Http\Controllers\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,8 @@ Route::group(['middleware' => 'auth'], function() {
     // 部署名の編集や、部署の削除などをするアクションへのルート
     Route::post('/departments/dep_control', [ DepartmentsController::class, 'dep_control' ])->name('departments.dep_control');
 
+    Route::get('/employees', [ EmployeesController::class, 'index' ])->name('employees.index');
+
+    Route::get('/employees/new_edit', [ EmployeesController::class, 'new_edit' ])->name('employees.new_edit');
 
 });

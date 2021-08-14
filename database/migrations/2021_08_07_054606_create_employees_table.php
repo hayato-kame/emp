@@ -45,7 +45,7 @@ class CreateEmployeesTable extends Migration
             $table->string('department_id');
             // Employeeモデルに、$datesプロパティをオーバーライドすること　日付の成形についての
             $table->datetime('hire_date');  // 入社日
-            $table->datetime('retire_date'); // 退社日
+            $table->datetime('retire_date')->nullable(); // 退社日  nullable() 入れないと、null代入できないので 入れる
             $table->timestamps();
 
             // 外部キー制約 従テーブル側に書く

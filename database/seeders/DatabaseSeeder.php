@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([ DepartmentsTableSeeder::class ]);
         // photos は親テーブルです 子テーブルはemployeesテーブルです
         $this->call( [PhotosTableSeeder::class] );
+        // 最後に子テーブルのシーダーを行う
+        $this->call([EmployeesTableSeeder::class]);
     }
 }
